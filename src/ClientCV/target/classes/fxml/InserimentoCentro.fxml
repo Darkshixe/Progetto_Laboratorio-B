@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CentriVaccinali.InserimentoCentriController">
+   <top>
+      <AnchorPane prefHeight="71.0" prefWidth="600.0" style="-fx-background-color: green;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="223.0" layoutY="16.0" text="Centri Vaccinali" textFill="WHITE">
+               <font>
+                  <Font name="Franklin Gothic Demi Cond" size="34.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="342.0" prefWidth="600.0" style="-fx-background-color: #CCFFFF;" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="14.0" layoutY="390.0" mnemonicParsing="false" onAction="#backToSelection" prefHeight="35.0" prefWidth="100.0" text="Indietro" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" />
+            <TextField fx:id="Nome_centro" layoutX="170.0" layoutY="60.0" prefHeight="25.0" prefWidth="217.0" />
+            <Label layoutY="60.0" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: green;" text="Nome" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></Label>
+            <ChoiceBox fx:id="boxQualificatore" layoutX="170.0" layoutY="140.0" prefHeight="25.0" prefWidth="80.0" />
+            <TextField fx:id="nome_indirizzo" layoutX="270.0" layoutY="140.0" promptText="Nome" />
+            <TextField fx:id="civico" layoutX="440.0" layoutY="140.0" prefHeight="25.0" prefWidth="45.0" promptText="Civ" />
+            <TextField fx:id="comune" layoutX="110.0" layoutY="220.0" prefHeight="25.0" prefWidth="149.0" promptText="Comune" />
+            <TextField fx:id="provincia" layoutX="110.0" layoutY="260.0" prefHeight="25.0" prefWidth="65.0" promptText="Provincia" />
+            <TextField fx:id="textCAP" layoutX="110.0" layoutY="180.0" prefHeight="25.0" prefWidth="48.0" promptText="CAP" />
+            <ChoiceBox fx:id="boxTipologia" layoutX="170.0" layoutY="100.0" prefHeight="25.0" prefWidth="140.0" />
+            <Button layoutX="568.0" layoutY="390.0" mnemonicParsing="false" onAction="#addCentro" prefHeight="35.0" prefWidth="100.0" text="Conferma" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+            <Label layoutY="22.0" prefHeight="25.0" prefWidth="387.0" style="-fx-background-color: green;" text="Inserisci i dati del centro vaccinale" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label layoutY="100.0" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: green;" text="Tipologia" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutY="140.0" prefHeight="24.0" prefWidth="130.0" style="-fx-background-color: green;" text="Indirizzo" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutY="180.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: green;" text="CAP" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutY="220.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: green;" text="Comune" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutY="260.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: green;" text="Provincia" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

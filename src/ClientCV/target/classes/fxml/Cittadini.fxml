@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cittadini.CittadiniController">
+   <top>
+      <AnchorPane prefHeight="70.0" prefWidth="628.0" style="-fx-background-color: green;" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" layoutX="223.0" layoutY="16.0" text="Cittadini" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font name="Franklin Gothic Demi Cond" size="34.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+   <left>
+      <AnchorPane prefHeight="530.0" prefWidth="230.0" style="-fx-background-color: #CCFFFF;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="fieldNome" layoutY="55.0" prefWidth="150.0" promptText="Nome centro" />
+            <Button layoutX="160.0" layoutY="55.0" mnemonicParsing="false" onAction="#searchByName" prefHeight="25.0" prefWidth="60.0" text="Cerca" />
+            <Label layoutY="15.0" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: green;" text="Ricerca per nome" textFill="WHITE" />
+            <Label layoutY="100.0" prefHeight="25.0" prefWidth="175.0" style="-fx-background-color: green;" text="Ricerca per comune e tipologia" textFill="WHITE" />
+            <TextField fx:id="fieldComune" layoutY="140.0" prefWidth="150.0" promptText="Comune" />
+            <Button layoutX="160.0" layoutY="180.0" mnemonicParsing="false" onAction="#searchByComune_tipo" prefHeight="25.0" prefWidth="60.0" text="Cerca" />
+            <Button layoutX="14.0" layoutY="491.0" mnemonicParsing="false" onAction="#backToHome" text="Indietro" />
+            <ChoiceBox fx:id="boxTipologia" layoutY="180.0" prefWidth="150.0" />
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="530.0" prefWidth="601.0" BorderPane.alignment="CENTER">
+         <children>
+            <ListView fx:id="lista" layoutX="20.0" layoutY="90.0" prefHeight="435.0" prefWidth="530.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="75.0" />
+            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="GREEN" height="60.0" layoutX="73.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" width="490.0" />
+            <ImageView fx:id="avatar" fitHeight="40.0" fitWidth="40.0" layoutX="82.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../login_icon.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="loggedLabel" layoutX="140.0" layoutY="23.0" text="Benvenuto, " visible="false">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="fieldUsername" layoutX="140.0" layoutY="23.0" prefHeight="25.0" prefWidth="125.0" promptText="Nome utente" />
+            <PasswordField fx:id="fieldPassword" layoutX="280.0" layoutY="23.0" prefHeight="25.0" prefWidth="125.0" promptText="Password" />
+            <Button fx:id="login_logout_button" layoutX="415.0" layoutY="23.0" mnemonicParsing="false" onAction="#login_logout" prefWidth="55.0" text="Login" />
+            <Button layoutX="480.0" layoutY="23.0" mnemonicParsing="false" onAction="#register" prefWidth="70.0" text="Registrati" />
+            <AnchorPane fx:id="infoPanel" layoutX="20.0" layoutY="90.0" prefHeight="435.0" prefWidth="530.0" style="-fx-border-color: black;" visible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="75.0">
+               <children>
+                  <Label fx:id="labelNome" layoutY="15.0" prefHeight="27.0" prefWidth="472.0" text="Nome Centro" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelTipo" layoutY="50.0" prefHeight="27.0" prefWidth="472.0" text="Tipologia" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelIndirizzo" layoutY="85.0" prefHeight="27.0" prefWidth="472.0" text="Indirizzo" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="12.0" layoutY="133.0" prefHeight="27.0" prefWidth="112.0" text="Eventi avversi" AnchorPane.leftAnchor="11.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="eventButton" layoutX="366.0" layoutY="316.0" mnemonicParsing="false" onAction="#addEventoAvverso" prefHeight="69.0" prefWidth="120.0" style="-fx-background-color: green;" text="Notifica qui gli eventuali eventi avversi" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true" />
+                  <Button layoutX="12.0" layoutY="396.0" mnemonicParsing="false" onAction="#backToList" text="Cancella" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" />
+                  <ChoiceBox fx:id="boxEventi" layoutX="11.0" layoutY="195.0" prefWidth="150.0" />
+                  <Label layoutX="270.0" layoutY="199.0" text="Casi" />
+                  <Label layoutX="270.0" layoutY="236.0" text="Intensità media" />
+                  <TextField fx:id="numCasi" editable="false" layoutX="173.0" layoutY="195.0" prefHeight="25.0" prefWidth="90.0" />
+                  <TextField fx:id="mediaInt" editable="false" layoutX="173.0" layoutY="232.0" prefHeight="25.0" prefWidth="90.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>

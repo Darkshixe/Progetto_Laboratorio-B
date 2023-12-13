@@ -7,16 +7,11 @@ package ServerDatabase;
 
 import java.sql.Date;
 /**
- * Classe di utilità contenente gli script SQL usati dal Server per la creazione del database e delle sue tabelle,
+ * Classe di utilitï¿½ contenente gli script SQL usati dal Server per la creazione del database e delle sue tabelle,
  * per l'inserimento di nuovi dati e le varie query utili alla raccolta di questi ultimi
  *
  */
 public class SQLCommands {
-	
-	/**
-	 * Script SQL usato per la creazione del database
-	 */
-	protected static String CREATEDB = "CREATE DATABASE esame_lab_b";
 	
 	/**
 	 * Script SQL usato per la creazione della tabella CentriVaccinali

@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.sql.*;
 
 /**
- * Classe di utilit‡ adibita alla effettiva comunicazione con il Database dal Server tramite JDBC per la creazione del database e delle sue tabelle,
+ * Classe di utilit√† adibita alla effettiva comunicazione con il Database dal Server tramite JDBC per la creazione del database e delle sue tabelle,
  * per l'inserimento di nuovi dati e le varie query utili alla raccolta di questi ultimi
  *
  */
@@ -17,28 +17,27 @@ public class DBManager implements Serializable{
 	private static final long serialVersionUID = 1L;
 	/**
 	 * Costruttore della classe
+	 * @param h host del database relazionale salvato in {@code host}
+	 * @param pt porta del database relazionale salvata in {@code port}
 	 * @param u username del database relazionale salvato in {@code user}
-	 * @param p password del database relazionale salvata in {@code psw}
+	 * @param pw password del database relazionale salvata in {@code psw}
 	 */
-	public DBManager(String u, String p) {
+	public DBManager(String h, String pt, String u, String pw) {
+		host = h.isBlank() ? "localhost" : h;
+		port = pt.isBlank() ? "5432" : pt;
 		user = u;
-		psw = p;
+		psw = pw;
 	}
 	
 	private Connection dbConnection;
+	private String host;
+	private String port;
 	private String user;
 	private String psw;
 	
 	/**
-	 * Metodo per la creazione del database
-	 */
-	private void createDB() throws SQLException{
-		Statement st = dbConnection.createStatement();
-		st.execute(SQLCommands.CREATEDB);
-	}
-		/**
-		 * Metodo per la creazione delle tabelle non dinamiche
-		 */
+	* Metodo per la creazione delle tabelle non dinamiche
+	*/
 	private void createTables() throws SQLException {
 		Statement st = dbConnection.createStatement();
 		st.execute(SQLCommands.CREATETABLE_CV);
@@ -66,7 +65,7 @@ public class DBManager implements Serializable{
 	}
 	/**
 	 * Metodo per l'inserimento di un vaccinato nel database
-	 * @param Nome_centro Nome del centro in cui Ë avvenuta la vaccinazione
+	 * @param Nome_centro Nome del centro in cui √® avvenuta la vaccinazione
 	 * @param Nome Nome del vaccinato
 	 * @param Cognome Cognome del vaccinato
 	 * @param CodiceFiscale Codice Fiscale del vaccinato
@@ -196,11 +195,7 @@ public class DBManager implements Serializable{
 	 */
 	public void start() throws ClassNotFoundException, SQLException {
 		Class.forName("org.postgresql.Driver");
-		String url = "jdbc:postgresql://localhost:5432/template1";
-		dbConnection = DriverManager.getConnection(url, user, psw);
-		createDB();
-		
-		url = "jdbc:postgresql://localhost:5432/esame_lab_b";
+		String url = "jdbc:postgresql://" + host + ":" + port + "/centri_vaccinali";
 		dbConnection = DriverManager.getConnection(url, user, psw);
 		createTables();
 	}
@@ -209,7 +204,7 @@ public class DBManager implements Serializable{
 	 */
 	public void exec() throws ClassNotFoundException, SQLException {
 		Class.forName("org.postgresql.Driver");
-		String url = "jdbc:postgresql://localhost:5432/esame_lab_b";
+		String url = "jdbc:postgresql://" + host + ":" + port + "/centri_vaccinali";
 		dbConnection = DriverManager.getConnection(url, user, psw);
 	}
 }

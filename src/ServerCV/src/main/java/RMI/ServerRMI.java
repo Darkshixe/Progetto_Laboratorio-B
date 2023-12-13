@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 import ServerDatabase.DBManager;
 /**
- * Classe principale per la realizzazione del server RMI, il cui oggetto remoto verrà utilizzato dai client
+ * Classe principale per la realizzazione del server RMI, il cui oggetto remoto verrï¿½ utilizzato dai client
  * per accedere ai servizi del server stesso
  *
  */
@@ -30,11 +30,11 @@ public class ServerRMI extends UnicastRemoteObject implements ServerRMIInterface
  * @param user nome utente per l'accesso al database da parte di {@code dbManager}
  * @param psw password per l'accesso al database da parte di {@code dbManager}
  */
-	public ServerRMI(Registry registro, String user, String psw) throws RemoteException, ClassNotFoundException, SQLException {
+	public ServerRMI(Registry registro, String host, String port, String user, String psw) throws RemoteException, ClassNotFoundException, SQLException {
 		super();
 		registro.rebind("SERVER", this);
 		
-		dbManager = new DBManager(user, psw);
+		dbManager = new DBManager(host, port, user, psw);
 		dbManager.exec();
 	}
 /**
@@ -66,7 +66,7 @@ public class ServerRMI extends UnicastRemoteObject implements ServerRMIInterface
 	}
 	/**
 	 * Metodo per registrare un vaccinato nel database
-	 * @param nome_centro Nome del centro in cui è avvenuta la vaccinazione
+	 * @param nome_centro Nome del centro in cui ï¿½ avvenuta la vaccinazione
 	 * @param Nome Nome del vaccinato
 	 * @param Cognome Cognome del vaccinato
 	 * @param Codice_fiscale Codice Fiscale del vaccinato

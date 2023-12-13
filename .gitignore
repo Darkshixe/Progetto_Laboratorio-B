@@ -1,6 +1,5 @@
-# ignore ALL .log files
-*.log
+# ignore ALL .class files
+*.class
 
-# ignore ALL files in ANY directory named temp
-/src/ClientCV/target/
-/src/ServerCV/target/
+# ignore ALL files in ANY directory named target
+target/

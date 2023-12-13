@@ -36,6 +36,10 @@ import javafx.scene.control.TextField;
 public class MainController implements Initializable{
 	
 	@FXML
+	private TextField hostText;
+	@FXML
+	private TextField portText;
+	@FXML
 	private TextField userText;
 	@FXML
 	private PasswordField pswText;
@@ -49,38 +53,15 @@ public class MainController implements Initializable{
 	private Registry registro;
 	
 	/**
-	 * Metodo usato per la creazione del database relazionale e delle sue tabelle
-	 */
-	public void makeDatabase(ActionEvent e) throws ClassNotFoundException {
-		boolean isValid = true;
-		try {
-			if(!userText.getText().isBlank() && !pswText.getText().isBlank()) {
-				dbStarter = new DBManager(userText.getText(), pswText.getText());
-				dbStarter.start();
-			}
-			else {
-				Alert alert = new Alert(AlertType.WARNING, "Uno o piu' campi sono vuoti", ButtonType.OK);
-				alert.showAndWait();
-				isValid = false;
-			}
-		} catch (SQLException e1) {
-			Alert alert = new Alert(AlertType.ERROR, e1.getMessage(), ButtonType.OK);
-			alert.showAndWait();
-			isValid = false;
-		}
-		if(isValid) {
-			Alert alert = new Alert(AlertType.INFORMATION, "Database creato correttamente", ButtonType.OK);
-			alert.showAndWait();
-		}
-	}
-	/**
 	 * Metodo usato per la creazione e avvio del server RMI
 	 */
 	public void startServer(ActionEvent e){
 		boolean isValid = true;
 		if(!userText.getText().isBlank() && !pswText.getText().isBlank()) {
 			try {
-				server = new ServerRMI(registro, userText.getText(), pswText.getText());
+				server = new ServerRMI(registro, hostText.getText(), portText.getText(), userText.getText(), pswText.getText());
+				dbStarter = new DBManager(hostText.getText(), portText.getText(), userText.getText(), pswText.getText());
+				dbStarter.start();
 			} catch (RemoteException | ClassNotFoundException | SQLException e1) {
 				Alert alert = new Alert(AlertType.ERROR, e1.getMessage(), ButtonType.OK);
 				alert.showAndWait();
@@ -116,7 +97,6 @@ public class MainController implements Initializable{
 		try {
 			registro = LocateRegistry.createRegistry(1099);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

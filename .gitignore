@@ -2,5 +2,5 @@
 *.log
 
 # ignore ALL files in ANY directory named temp
-temp/
 /src/ClientCV/target/
+/src/ServerCV/target/
